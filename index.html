@@ -1,81 +1,637 @@
+You’re going big—love that.  
+Here’s a **fully loaded `index.html`** with:
+
+- Text logo + nav  
+- Hero section  
+- Trades grid  
+- About section  
+- Gallery  
+- Blog/news  
+- Tradeswomen directory  
+- Contact **form**  
+- Social media icons  
+- Dark/Light mode toggle  
+- Smooth animations  
+- SEO meta tags  
+- Mobile‑first layout  
+
+Copy this as **`index.html`** into your GitHub repo:
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <title>Tradeswomen Network</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Tradeswomen Network – empowering women in skilled trades with visibility, community, and opportunity." />
+  <meta name="keywords" content="tradeswomen, women in trades, mechanics, electricians, truck drivers, tow truck, blue collar" />
+  <meta name="author" content="Tradeswomen Network" />
+
   <style>
-    /* CSS Variables for theme colors */
     :root {
       --bg: #050816;
+      --bg-soft: #0a1024;
       --card: #0f172a;
       --text: #ffffff;
+      --muted: #cbd5e1;
       --accent: #ff6f61;
+      --accent-soft: #ffb3aa;
+      --border-soft: #1f2937;
     }
 
-    /* Reset and base styles */
+    :root.light {
+      --bg: #f8fafc;
+      --bg-soft: #e5e7eb;
+      --card: #ffffff;
+      --text: #0f172a;
+      --muted: #4b5563;
+      --accent: #e11d48;
+      --accent-soft: #fecaca;
+      --border-soft: #d1d5db;
+    }
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      font-family: Arial, sans-serif;
     }
 
     body {
       background-color: var(--bg);
       color: var(--text);
-      font-family: Arial, sans-serif;
       line-height: 1.6;
-      padding: 20px;
+      overflow-x: hidden;
+      transition: background-color 0.3s, color 0.3s;
     }
 
+    a {
+      color: inherit;
+    }
+
+    /* HEADER */
     header {
-      text-align: center;
-      margin-bottom: 20px;
+      background-color: var(--bg-soft);
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
     }
 
-    h1 {
+    .logo {
+      font-size: 1.6rem;
+      font-weight: bold;
       color: var(--accent);
+      letter-spacing: 1px;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      transition: color 0.3s, background-color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+      background-color: rgba(255,255,255,0.05);
+    }
+
+    .toggle-btn {
+      border: 1px solid var(--border-soft);
+      background: transparent;
+      color: var(--text);
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      margin-left: 0.5rem;
+    }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(rgba(5,8,22,0.7), rgba(5,8,22,0.7)),
+        url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1400&q=80')
+        no-repeat center/cover;
+      padding: 5rem 1.5rem;
+      text-align: center;
+      animation: fadeIn 1.5s ease;
+    }
+
+    .hero h1 {
+      font-size: 2.6rem;
+      margin-bottom: 1rem;
+      color: var(--accent-soft);
+    }
+
+    .hero p {
+      max-width: 800px;
+      margin: 0 auto 2rem auto;
+      color: var(--muted);
+      font-size: 1.1rem;
+    }
+
+    .button {
+      background-color: var(--accent);
+      color: var(--text);
+      padding: 0.8rem 2rem;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s, transform 0.2s;
+      display: inline-block;
+    }
+
+    .button:hover {
+      background-color: #ff4a3d;
+      transform: translateY(-1px);
+    }
+
+    /* SECTIONS */
+    .section {
+      max-width: 1100px;
+      margin: 3rem auto;
+      padding: 0 1.5rem;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      color: var(--accent);
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+    }
+
+    /* IMAGE PLACEHOLDERS */
+    .image-box {
+      width: 100%;
+      height: 230px;
+      background-color: #1e293b;
+      border: 2px dashed #334155;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #64748b;
+      font-size: 0.95rem;
+    }
+
+    :root.light .image-box {
+      background-color: #e5e7eb;
+      border-color: #9ca3af;
+      color: #6b7280;
+    }
+
+    /* GRID CARDS */
+    .grid {
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     }
 
     .card {
       background-color: var(--card);
-      padding: 20px;
-      border-radius: 8px;
-      max-width: 600px;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      border: 1px solid var(--border-soft);
+      animation: slideUp 0.9s ease;
+    }
+
+    .card h3 {
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    /* ABOUT */
+    .about-text {
+      max-width: 800px;
       margin: 0 auto;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      color: var(--muted);
     }
 
-    a.button {
-      display: inline-block;
-      background-color: var(--accent);
+    /* GALLERY */
+    .gallery-grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    .gallery-item {
+      background-color: #111827;
+      height: 160px;
+      border-radius: 8px;
+      border: 2px dashed #334155;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #64748b;
+      font-size: 0.9rem;
+    }
+
+    :root.light .gallery-item {
+      background-color: #e5e7eb;
+      border-color: #9ca3af;
+      color: #6b7280;
+    }
+
+    /* BLOG */
+    .blog-card {
+      background-color: var(--card);
+      padding: 1.5rem;
+      border-radius: 10px;
+      margin-bottom: 1.5rem;
+      border: 1px solid var(--border-soft);
+      animation: fadeIn 1.1s ease;
+    }
+
+    .blog-card h3 {
+      color: var(--accent);
+      margin-bottom: 0.4rem;
+    }
+
+    .blog-meta {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+
+    /* DIRECTORY */
+    .directory-card {
+      background-color: var(--card);
+      padding: 1rem;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      border-left: 4px solid var(--accent);
+      border-right: 1px solid var(--border-soft);
+      border-top: 1px solid var(--border-soft);
+      border-bottom: 1px solid var(--border-soft);
+      font-size: 0.95rem;
+    }
+
+    .directory-card strong {
+      color: var(--accent-soft);
+    }
+
+    /* CONTACT + FORM */
+    .contact-wrapper {
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .contact-wrapper p {
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    form {
+      margin-top: 1rem;
+      text-align: left;
+    }
+
+    label {
+      display: block;
+      font-size: 0.9rem;
+      margin-bottom: 0.25rem;
+      color: var(--muted);
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 0.6rem 0.75rem;
+      border-radius: 6px;
+      border: 1px solid var(--border-soft);
+      background-color: var(--bg-soft);
       color: var(--text);
-      padding: 10px 20px;
-      border-radius: 5px;
-      text-decoration: none;
-      margin-top: 10px;
-      transition: background-color 0.3s ease;
+      margin-bottom: 0.75rem;
+      font-size: 0.9rem;
     }
 
-    a.button:hover {
-      background-color: #ff4a3d;
+    :root.light input,
+    :root.light textarea {
+      background-color: #ffffff;
+    }
+
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .submit-btn {
+      border: none;
+      cursor: pointer;
+      margin-top: 0.5rem;
+    }
+
+    /* SOCIAL ICONS */
+    .social-row {
+      margin-top: 1.5rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .social-pill {
+      border-radius: 999px;
+      border: 1px solid var(--border-soft);
+      padding: 0.35rem 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      cursor: pointer;
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    .social-pill span {
+      font-size: 1rem;
+    }
+
+    .social-pill:hover {
+      border-color: var(--accent);
+      color: var(--accent-soft);
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      color: var(--muted);
+      font-size: 0.85rem;
+      margin-top: 3rem;
+      border-top: 1px solid var(--border-soft);
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 700px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
+      nav {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+      }
+      .hero h1 {
+        font-size: 2.1rem;
+      }
     }
   </style>
 </head>
+
 <body>
+
+  <!-- HEADER -->
   <header>
-    <h1>Tradeswomen Network</h1>
-    <p>Connecting and empowering women in skilled trades</p>
+    <div class="logo">Tradeswomen Network</div>
+    <nav>
+      <a href="#trades">Trades</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#blog">Blog</a>
+      <a href="#directory">Directory</a>
+      <a href="#contact">Contact</a>
+      <button class="toggle-btn" id="modeToggle">Light mode</button>
+    </nav>
   </header>
 
-  <main>
-    <div class="card">
-      <h2>Welcome</h2>
-      <p>
-        Join our community of tradeswomen, share your experiences, and find resources to grow your career.
-      </p>
-      <a href="#join" class="button">Join Now</a>
+  <!-- HERO -->
+  <section class="hero">
+    <h1>Empowering Women in Skilled Trades</h1>
+    <p>Celebrating the women who build, repair, drive, weld, wire, and power our world—one trade at a time.</p>
+    <a href="#directory" class="button">Join the Network</a>
+  </section>
+
+  <!-- TRADES GRID -->
+  <section class="section" id="trades">
+    <h2 class="section-title">Featured Trades</h2>
+    <p class="section-subtitle">Replace each placeholder with real photos and stories from your community.</p>
+
+    <div class="grid">
+
+      <div class="card">
+        <div class="image-box">Upload: Female Mechanic Photo</div>
+        <h3>Female Mechanics</h3>
+        <p>Breaking stereotypes under the hood. Add your description, stats, or spotlight story here.</p>
+      </div>
+
+      <div class="card">
+        <div class="image-box">Upload: Female Electrician Photo</div>
+        <h3>Female Electricians</h3>
+        <p>Powering homes, commercial projects, and infrastructure with precision and expertise.</p>
+      </div>
+
+      <div class="card">
+        <div class="image-box">Upload: Female OTR Driver Photo</div>
+        <h3>Female OTR Drivers</h3>
+        <p>Commanding the highways and keeping supply chains moving across the nation.</p>
+      </div>
+
+      <div class="card">
+        <div class="image-box">Upload: Female Tow Truck Operator Photo</div>
+        <h3>Female Tow Truckers</h3>
+        <p>Highway heroes providing recovery, roadside assistance, and safety when it matters most.</p>
+      </div>
+
     </div>
-  </main>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <h2 class="section-title">About the Network</h2>
+    <div class="image-box">Upload: About / Team / Mission Image</div>
+    <p class="about-text">
+      Tradeswomen Network is a grassroots platform built to foster visibility, mentorship, and community
+      for women in blue-collar and skilled trades. Use this space to tell your story, your mission, and
+      how people can get involved.
+    </p>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="section" id="gallery">
+    <h2 class="section-title">Photo Gallery</h2>
+    <p class="section-subtitle">Showcase real women on the job—shop floors, job sites, trucks, and beyond.</p>
+
+    <div class="gallery-grid">
+      <div class="gallery-item">Upload Image 1</div>
+      <div class="gallery-item">Upload Image 2</div>
+      <div class="gallery-item">Upload Image 3</div>
+      <div class="gallery-item">Upload Image 4</div>
+      <div class="gallery-item">Upload Image 5</div>
+      <div class="gallery-item">Upload Image 6</div>
+    </div>
+  </section>
+
+  <!-- BLOG -->
+  <section class="section" id="blog">
+    <h2 class="section-title">Latest Stories</h2>
+    <p class="section-subtitle">Use this section for news, interviews, and features on tradeswomen.</p>
+
+    <div class="blog-card">
+      <h3>Blog Title One</h3>
+      <div class="blog-meta">Date · Category</div>
+      <p>Write your article summary here. Highlight a journey, a milestone, or a lesson from the field.</p>
+    </div>
+
+    <div class="blog-card">
+      <h3>Blog Title Two</h3>
+      <div class="blog-meta">Date · Category</div>
+      <p>Use this space to share updates, events, or resources for women entering the trades.</p>
+    </div>
+  </section>
+
+  <!-- DIRECTORY -->
+  <section class="section" id="directory">
+    <h2 class="section-title">Tradeswomen Directory</h2>
+    <p class="section-subtitle">Add profiles of tradeswomen who want to be visible for mentorship, hiring, or collaboration.</p>
+
+    <div class="directory-card">
+      <strong>Name:</strong> Add Name Here<br>
+      <strong>Trade:</strong> Add Trade Here<br>
+      <strong>Location:</strong> Add City, State<br>
+      <strong>Contact:</strong> Add Email or Social Handle
+    </div>
+
+    <div class="directory-card">
+      <strong>Name:</strong> Add Name Here<br>
+      <strong>Trade:</strong> Add Trade Here<br>
+      <strong>Location:</strong> Add City, State<br>
+      <strong>Contact:</strong> Add Email or Social Handle
+    </div>
+
+    <div class="directory-card">
+      <strong>Name:</strong> Add Name Here<br>
+      <strong>Trade:</strong> Add Trade Here<br>
+      <strong>Location:</strong> Add City, State<br>
+      <strong>Contact:</strong> Add Email or Social Handle
+    </div>
+  </section>
+
+  <!-- CONTACT + FORM -->
+  <section class="section" id="contact">
+    <h2 class="section-title">Get Involved</h2>
+    <div class="contact-wrapper">
+      <p>
+        Use this form for feature requests, partnerships, or to join the directory. You can wire it up
+        later to a form service (Netlify Forms, Formspree, etc.).
+      </p>
+
+      <form>
+        <div class="form-row">
+          <div>
+            <label for="name">Name</label>
+            <input id="name" type="text" placeholder="Your name" />
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input id="email" type="email" placeholder="you@example.com" />
+          </div>
+        </div>
+
+        <label for="trade">Trade / Role</label>
+        <input id="trade" type="text" placeholder="Mechanic, Electrician, OTR Driver, etc." />
+
+        <label for="message">Message</label>
+        <textarea id="message" placeholder="Tell us how you'd like to connect or be featured."></textarea>
+
+        <button type="submit" class="button submit-btn">Submit (placeholder)</button>
+      </form>
+
+      <div class="social-row">
+        <a href="#" class="social-pill">
+          <span>🐦</span> Twitter
+        </a>
+        <a href="#" class="social-pill">
+          <span>📸</span> Instagram
+        </a>
+        <a href="#" class="social-pill">
+          <span>💼</span> LinkedIn
+        </a>
+        <a href="#" class="social-pill">
+          <span>▶️</span> YouTube
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 Tradeswomen Network. All Rights Reserved.
+  </footer>
+
+  <script>
+    // Simple dark/light mode toggle
+    const toggleBtn = document.getElementById('modeToggle');
+    const root = document.documentElement;
+
+    function setMode(mode) {
+      if (mode === 'light') {
+        root.classList.add('light');
+        toggleBtn.textContent = 'Dark mode';
+      } else {
+        root.classList.remove('light');
+        toggleBtn.textContent = 'Light mode';
+      }
+      localStorage.setItem('tw-mode', mode);
+    }
+
+    const savedMode = localStorage.getItem('tw-mode');
+    if (savedMode === 'light') {
+      setMode('light');
+    }
+
+    toggleBtn.addEventListener('click', () => {
+      const isLight = root.classList.contains('light');
+      setMode(isLight ? 'dark' : 'light');
+    });
+  </script>
+
 </body>
 </html>
+```
+
+If you want, next we can design actual copy for each section (not just placeholders) so it feels fully “live.”
