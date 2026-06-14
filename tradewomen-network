@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tradeswomen Network</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    /* CSS Variables for theme colors */
+    :root {
+      --bg: #050816;
+      --card: #0f172a;
+      --text: #ffffff;
+      --accent: #ff6f61;
+    }
+
+    /* Reset and base styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      color: var(--accent);
+    }
+
+    .card {
+      background-color: var(--card);
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 600px;
+      margin: 0 auto;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    a.button {
+      display: inline-block;
+      background-color: var(--accent);
+      color: var(--text);
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      margin-top: 10px;
+      transition: background-color 0.3s ease;
+    }
+
+    a.button:hover {
+      background-color: #ff4a3d;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Tradeswomen Network</h1>
+    <p>Connecting and empowering women in skilled trades</p>
+  </header>
+
+  <main>
+    <div class="card">
+      <h2>Welcome</h2>
+      <p>
+        Join our community of tradeswomen, share your experiences, and find resources to grow your career.
+      </p>
+      <a href="#join" class="button">Join Now</a>
+    </div>
+  </main>
+</body>
+</html>
